@@ -127,7 +127,7 @@ ANOMALY_DETECTOR_ENDPOINT = os.environ['ANOMALY_DETECTOR_ENDPOINT']
 ad_client = AnomalyDetectorClient(ANOMALY_DETECTOR_ENDPOINT, AzureKeyCredential(SUBSCRIPTION_KEY))
 
 time_format = "%Y-%m-%dT%H:%M:%SZ"
-blob_url = "Path-to-sample-file-in-your-storage-account"  # example path: https://docstest001.blob.core.windows.net/test/sample_data_5_3000.csv
+blob_url = "Path-to-sample-file-in-your-storage-account"  # example path: https://docstest001.blob.core.windows.net/test/sample_data_5_3000_.csv
 
 train_body = ModelInfo(
     data_source=blob_url,
