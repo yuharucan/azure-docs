@@ -175,13 +175,13 @@ result = ad_client.detect_multivariate_batch_anomaly(model_id, batch_inference_b
 result_id = result.result_id
 
 # Get results (may need a few seconds)
-r = ad_client.get_multivariate_batch_detection_result(result_id)
+anomaly_results = ad_client.get_multivariate_batch_detection_result(result_id)
 print("Get detection result...(it may take a few seconds)")
 
-while r.summary.status != MultivariateBatchDetectionStatus.READY and r.summary.status != MultivariateBatchDetectionStatus.FAILED and r.summary.status !=MultivariateBatchDetectionStatus.CREATED:
-    anomaly_results = ad_client.get_multivariate_batch_detection_result(result_id)
+while anomaly_results.summary.status != MultivariateBatchDetectionStatus.READY and anomaly_results.summary.status != MultivariateBatchDetectionStatus.FAILED and anomaly_results.summary.status !=MultivariateBatchDetectionStatus.CREATED:
     print("Detection is {}".format(r.summary.status))
     time.sleep(5)
+    anomaly_results = ad_client.get_multivariate_batch_detection_result(result_id)
     
    
 print("Result ID:\t", anomaly_results.result_id)
